@@ -20,13 +20,13 @@ RUN apt-get -yqq update \
 WORKDIR /tmpdir
 
 ### YAMBO ###
-ARG yambo_version=5.0.0
+ARG yambo_version=4.5.3
 RUN wget https://github.com/yambo-code/yambo/archive/${yambo_version}.tar.gz -O yambo-${yambo_version}.tar.gz \
  && tar zxf yambo-${yambo_version}.tar.gz && cd yambo-${yambo_version} \
  && ./configure --disable-mpi --enable-open-mp --enable-msgs-comps --enable-time-profile --enable-memory-profile \
     --with-blas-libs="-L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" \
     --with-lapack-libs="-L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" \
- && make -j4 yambo && make -j4 interfaces && make -j4 ypp \
+ && make ext-libs && make -j4 yambo && make -j4 interfaces && make -j4 ypp \
  && mkdir -p /usr/local/yambo-${yambo_version}/lib \
  && cp -r bin /usr/local/yambo-${yambo_version}/. \
  && cp -r lib/external/*/*/lib/*.* /usr/local/yambo-${yambo_version}/lib/. \
