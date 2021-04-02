@@ -20,7 +20,7 @@ RUN apt-get -yqq update \
 WORKDIR /tmpdir
 
 ### YAMBO ###
-ARG yambo_version=5.0.0
+ARG yambo_version=5.0.1
 RUN wget https://github.com/yambo-code/yambo/archive/${yambo_version}.tar.gz -O yambo-${yambo_version}.tar.gz \
  && tar zxf yambo-${yambo_version}.tar.gz && cd yambo-${yambo_version} \
  && ./configure --disable-mpi --enable-open-mp --enable-msgs-comps --enable-time-profile --enable-memory-profile \
