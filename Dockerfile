@@ -23,7 +23,7 @@ WORKDIR /tmpdir
 ARG yambo_version=4.5.3
 RUN wget https://github.com/yambo-code/yambo/archive/${yambo_version}.tar.gz -O yambo-${yambo_version}.tar.gz \
  && tar zxf yambo-${yambo_version}.tar.gz && cd yambo-${yambo_version} \
- && ./configure --disable-mpi --enable-open-mp --enable-msgs-comps --enable-time-profile --enable-memory-profile \
+ && ./configure --disable-mpi --enable-open-mp --enable-msgs-comps --enable-time-profile --enable-memory-profile --enable-netcdf-hdf5 \
     --with-blas-libs="-L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" \
     --with-lapack-libs="-L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" \
  && make ext-libs && make -j4 yambo && make interfaces ypp \
