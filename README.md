@@ -4,13 +4,7 @@ Docker container for Yambo code v5.0.1 compiled with GCC v9.3 (OpenMP enabled) a
 
 In this Docker container the OS Ubuntu v20.04 is used as starting point for the installation of the Yambo code compiled with gcc@9.3. 
 As parallelization strategies OpenMP threading system is enabled, the MPI parallelization is disabled.
-The library used are: 
-- IOTK
-- HDF5
-- NetCFD
-- Intel MKL
-- FFTW
-- LibXC
+The library used are: IOTK, HDF5, NetCDF, Intel MKL, FFTW, LibXC.
 
 ## How to use it in a x86_64 personal computer
 
