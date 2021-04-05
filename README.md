@@ -1,4 +1,5 @@
 # yambo-gcc_openmp_mkl
+
 Docker container for Yambo code v5.0.1 compiled with GCC v9.3 (OpenMP enabled) and MKL from Ubuntu 20.04 repository
 
 In this Docker container the OS Ubuntu v20.04 is used as starting point for the installation of the Yambo code compiled with gcc@9.3. 
@@ -16,7 +17,7 @@ The library used are:
 In order to run the container in a personal computer first pull the container:
 
 ```
-docker pull nicspalla/yambo-gcc_openmp_mkl:latest
+docker pull nicspalla/yambo-gcc_openmp_mkl
 ```
 
 To run Yambo into the container:
@@ -25,7 +26,7 @@ To run Yambo into the container:
 docker run -ti --user $(id -u):$(id -g) \
    --mount type=bind,source="$(pwd)",target=/tmpdir \
    -e OMP_NUM_THREADS=4  \
-   nicspalla/yambo-gcc_openmp_mkl:latest \
+   nicspalla/yambo-gcc_openmp_mkl \
    yambo -F yambo.in -J yambo.out
 ```
 
@@ -36,7 +37,7 @@ Otherwise (suggested!), copy and paste the code below in a file, i.e called drun
 docker run -ti --user $(id -u):$(id -g) \
    --mount type=bind,source="$(pwd)",target=/tmpdir \
    -e OMP_NUM_THREADS=4  \
-   nicspalla/yambo-gcc_openmp_mkl:latest $@
+   nicspalla/yambo-gcc_openmp_mkl $@
 ```
 
 then give the file execute privileges:

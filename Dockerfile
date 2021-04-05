@@ -26,11 +26,11 @@ RUN wget https://github.com/yambo-code/yambo/archive/${yambo_version}.tar.gz -O 
  && ./configure --disable-mpi --enable-open-mp --enable-msgs-comps --enable-time-profile --enable-memory-profile \
     --with-blas-libs="-L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" \
     --with-lapack-libs="-L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" \
- && make -j4 yambo && make -j4 interfaces && make -j4 ypp \
+ && make ext-libs && make -j4 yambo && make interfaces ypp \
  && mkdir -p /usr/local/yambo-${yambo_version}/lib \
  && cp -r bin /usr/local/yambo-${yambo_version}/. \
  && cp -r lib/external/*/*/lib/*.* /usr/local/yambo-${yambo_version}/lib/. \
- && cp -r lib/external/*/*/v4/serial/lib/*.* /usr/local/yambo-${yambo_version}/lib/. \
+ && cp -r lib/external/*/*/v*/serial/lib/*.* /usr/local/yambo-${yambo_version}/lib/. \
  && cd .. && rm -rf yambo-${yambo_version} yambo-${yambo_version}.tar.gz
 
 ENV PATH=/usr/local/yambo-${yambo_version}/bin:$PATH \
