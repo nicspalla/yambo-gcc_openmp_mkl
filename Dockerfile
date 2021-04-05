@@ -30,7 +30,7 @@ RUN wget https://github.com/yambo-code/yambo/archive/${yambo_version}.tar.gz -O 
  && mkdir -p /usr/local/yambo-${yambo_version}/lib \
  && cp -r bin /usr/local/yambo-${yambo_version}/. \
  && cp -r lib/external/*/*/lib/*.* /usr/local/yambo-${yambo_version}/lib/. \
- && cp -r lib/external/*/*/v4/serial/lib/*.* /usr/local/yambo-${yambo_version}/lib/. \
+ && cp -r lib/external/*/*/v*/serial/lib/*.* /usr/local/yambo-${yambo_version}/lib/. \
  && cd .. && rm -rf yambo-${yambo_version} yambo-${yambo_version}.tar.gz
 
 ENV PATH=/usr/local/yambo-${yambo_version}/bin:$PATH \
